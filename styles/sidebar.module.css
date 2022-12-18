@@ -1,0 +1,17 @@
+.sidebarMain {
+  /* background-image: url("https://c4.wallpaperflare.com/wallpaper/892/692/922/howl-s-moving-castle-studio-ghibli-fantasy-art-clouds-daylight-hd-wallpaper-preview.jpg"); */
+  /* @apply bg-cover bg-no-repeat bg-center bg-cyan-800 bg-blend-lighten h-screen; */
+  @apply bg-black h-screen;
+  @apply flex flex-col gap-2 text-gray-400 text-sm p-6;
+  @apply overflow-y-scroll scrollbar-hide;
+  @apply sm:max-w-[15rem] md:max-w-[20rem] lg:max-w-[30rem] hidden md:inline-flex;
+}
+.sidebarIcon {
+  @apply h-6 w-6;
+}
+.sidebarButton {
+  @apply flex space-x-4 hover:text-white;
+}
+.sidebarLabel {
+  @apply font-bold;
+}

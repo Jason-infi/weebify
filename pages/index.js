@@ -1,20 +1,26 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
-import { signOut, useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
+import Sidebar from "../components/Sidebar";
+import Content from "../components/Content";
+import Player from "../components/Player";
 
 export default function Home() {
   const { data: session, status } = useSession();
-  console.log(session);
   return (
-    <div className=''>
-      <main className=''>
-        <div>
-          <button onClick={() => signOut()}>sign out</button>
-        </div>
+    <div className='h-screen overflow-hidden'>
+      <main className='flex'>
+        <Sidebar />
+        <Content />
       </main>
-
-      <footer className=''></footer>
+      <Player />
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+  return {
+    props: {
+      session,
+    },
+  };
 }

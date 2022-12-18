@@ -1,0 +1,13 @@
+.loginMain {
+  @apply grid place-items-center h-full;
+  background-image: url("https://c4.wallpaperflare.com/wallpaper/892/692/922/howl-s-moving-castle-studio-ghibli-fantasy-art-clouds-daylight-hd-wallpaper-preview.jpg");
+  @apply bg-cover bg-no-repeat bg-center bg-cyan-800 bg-blend-lighten blur-sm;
+}
+.loginIcon {
+  @apply rounded-full bg-cover bg-no-repeat bg-center h-20 w-60;
+}
+.loginBtn {
+  @apply rounded-md bg-green-500 hover:scale-95 transition-all ease-in shadow-lg;
+  @apply inline-block w-1/2 p-1;
+  @apply font-semibold text-white;
+}

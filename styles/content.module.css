@@ -1,0 +1,15 @@
+.contentMain {
+  @apply bg-cover bg-no-repeat bg-center bg-pink-500 bg-blend-lighten h-screen;
+  @apply flex-grow;
+  @apply overflow-y-scroll scrollbar-hide;
+}
+.contentIcon {
+  @apply h-4 w-4;
+}
+.contentButton {
+  @apply flex space-x-2 hover:text-white;
+}
+.contentSection {
+  @apply flex h-72 px-8 space-x-6 items-center;
+}
+/* from-pink-500/90 to-black/95from-pink-500/90 to-black/95 */

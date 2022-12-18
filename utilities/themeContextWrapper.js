@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { themeContext, themes } from "./themeContext";
 
-const themeContextWrapper = ({ children }) => {
+const ThemeContextWrapper = ({ children }) => {
   const [theme, setTheme] = useState(themes.light);
   const changeTheme = (theme) => {
     setTheme(theme);
@@ -25,4 +25,4 @@ const themeContextWrapper = ({ children }) => {
   );
 };
 
-export default themeContextWrapper;
+export default ThemeContextWrapper;
