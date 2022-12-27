@@ -1,0 +1,3 @@
+.playerBtn {
+  @apply text-gray-300 hover:text-white h-6 w-9 cursor-pointer;
+}

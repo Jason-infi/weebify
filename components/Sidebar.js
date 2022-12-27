@@ -10,22 +10,32 @@ import {
 import styles from "../styles/sidebar.module.css";
 import useSpotify from "../hooks/useSpotify";
 import { useSession } from "next-auth/react";
-import { playlistIdState } from "../atoms/playlistIdstate";
+import { playlistIdState, playlistState } from "../atoms/playlistIdstate";
 import { useRecoilState } from "recoil";
 
 const Sidebar = () => {
-  const [playlists, setPlaylist] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
   const spotifyApi = useSpotify();
   const { data: session } = useSession();
+  const [playlist, setPlaylist] = useRecoilState(playlistState);
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       spotifyApi.getUserPlaylists().then((data) => {
-        setPlaylist(data.body.items);
+        setPlaylists(data.body.items);
       });
     }
   }, [session, spotifyApi]);
+
+  const getUserLikedTracks = () => {
+    if (spotifyApi.getAccessToken()) {
+      spotifyApi.getMySavedTracks().then((data) => {
+        setPlaylist({ tracks: data.body });
+        console.log(data);
+      });
+    }
+  };
 
   return (
     <div className={`${styles.sidebarMain}`}>
@@ -57,15 +67,20 @@ const Sidebar = () => {
               <p className={`${styles.sidebarLabel}`}>Create Playlist</p>
             </button>
             <button className={`${styles.sidebarButton}`}>
-              <HeartIcon className={`${styles.sidebarIcon}`} />
-              <p className={`${styles.sidebarLabel}`}>Liked Songs</p>
+              <HeartIcon className={`${styles.sidebarIcon} text-pink-500`} />
+              <p
+                className={`${styles.sidebarLabel}`}
+                onClick={getUserLikedTracks}
+              >
+                Liked Songs
+              </p>
             </button>
           </div>
         </div>
         <hr className='border-none bg-gray-800 h-px' />
         {playlists.map((playlist) => (
           <button
-            className={`${styles.sidebarButton} truncate`}
+            className={`${styles.sidebarButton} truncate text-sm tracking-tight`}
             key={playlist.id}
             onClick={() => setPlaylistId(playlist.id)}
           >

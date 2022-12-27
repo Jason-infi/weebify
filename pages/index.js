@@ -11,7 +11,9 @@ export default function Home() {
         <Sidebar />
         <Content />
       </main>
-      <Player />
+      <div className='sticky bottom-0'>
+        <Player />
+      </div>
     </div>
   );
 }

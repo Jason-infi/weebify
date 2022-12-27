@@ -4,14 +4,15 @@
   @apply bg-black h-screen;
   @apply flex flex-col gap-2 text-gray-400 text-sm p-6;
   @apply overflow-y-scroll scrollbar-hide;
-  @apply sm:max-w-[15rem] md:max-w-[20rem] lg:max-w-[30rem] hidden md:inline-flex;
+  @apply md:min-w-[24rem] hidden md:inline-flex;
 }
 .sidebarIcon {
   @apply h-6 w-6;
 }
 .sidebarButton {
-  @apply flex space-x-4 hover:text-white;
+  @apply flex space-x-4 hover:text-white items-center;
 }
 .sidebarLabel {
-  @apply font-bold;
+  @apply font-semibold tracking-tight;
+  font-family: "Poppins", sans-serif;
 }
