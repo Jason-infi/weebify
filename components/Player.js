@@ -75,7 +75,6 @@ const Player = () => {
         setIsPlaying(true);
       }
     });
-    console.log(spotifyApi.getAccessToken());
   };
 
   const handleRepeat = () => {

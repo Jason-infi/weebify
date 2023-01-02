@@ -7,6 +7,7 @@ import { playlistIdState, playlistState } from "../atoms/playlistIdstate";
 import { useRecoilValue, useRecoilState } from "recoil";
 import useSpotify from "../hooks/useSpotify";
 import Songs from "./Songs";
+import Profile from "./Profile";
 
 const Content = () => {
   const { data: session } = useSession();
@@ -40,19 +41,7 @@ const Content = () => {
         className={`bg-gradient-to-b to-gray-900/90 from-pink-500/90 via-pink-600/90 `}
       >
         <header className={`'h-15 p-2 px-4  flex justify-end`}>
-          <div
-            className={`flex space-x-2 bg-pink-900 hover:bg-gray-800 rounded-full text-white text-sm p-1 items-center`}
-          >
-            <img
-              src={session?.user.image}
-              alt=''
-              className='h-7 w-7 rounded-full'
-            />
-            <h2 className=''>{session?.user.name}</h2>
-            <button onClick={() => signOut()} className='pr-1'>
-              <LockClosedIcon className={`${styles.contentIcon} `} />
-            </button>
-          </div>
+          <Profile />
         </header>
         <section className={`${styles.contentSection}`}>
           <img

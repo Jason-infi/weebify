@@ -12,6 +12,7 @@ import useSpotify from "../hooks/useSpotify";
 import { useSession } from "next-auth/react";
 import { playlistIdState, playlistState } from "../atoms/playlistIdstate";
 import { useRecoilState } from "recoil";
+import Link from "next/link";
 
 const Sidebar = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -32,7 +33,6 @@ const Sidebar = () => {
     if (spotifyApi.getAccessToken()) {
       spotifyApi.getMySavedTracks().then((data) => {
         setPlaylist({ tracks: data.body });
-        console.log(data);
       });
     }
   };
@@ -54,7 +54,9 @@ const Sidebar = () => {
             </button>
             <button className={`${styles.sidebarButton}`}>
               <MagnifyingGlassCircleIcon className={`${styles.sidebarIcon}`} />
-              <p className={`${styles.sidebarLabel}`}>Search</p>
+              <Link className={`${styles.sidebarLabel}`} href='/search'>
+                Search
+              </Link>
             </button>
             <button className={`${styles.sidebarButton}`}>
               <BuildingLibraryIcon className={`${styles.sidebarIcon}`} />
@@ -68,12 +70,13 @@ const Sidebar = () => {
             </button>
             <button className={`${styles.sidebarButton}`}>
               <HeartIcon className={`${styles.sidebarIcon} text-pink-500`} />
-              <p
+              <Link
                 className={`${styles.sidebarLabel}`}
                 onClick={getUserLikedTracks}
+                href='/'
               >
                 Liked Songs
-              </p>
+              </Link>
             </button>
           </div>
         </div>
@@ -84,7 +87,7 @@ const Sidebar = () => {
             key={playlist.id}
             onClick={() => setPlaylistId(playlist.id)}
           >
-            {playlist.name}
+            <Link href={"/"}>{playlist.name}</Link>
           </button>
         ))}
       </div>

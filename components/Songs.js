@@ -24,7 +24,7 @@ const Songs = ({ playlist }) => {
       <hr className='border-none bg-gray-800 h-px' />
 
       {playlist?.tracks.items.map((track, idx) => (
-        <Song key={track.track.id} order={idx} track={track} />
+        <Song key={track?.track?.id ?? track.id} order={idx} track={track} />
       ))}
     </div>
   );
